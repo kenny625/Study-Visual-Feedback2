@@ -1,4 +1,4 @@
-var ip = '10.0.1.2';
+var ip = 'localhost';
 var canvas = document.getElementById("myCanvas");
 var ctx1 = canvas.getContext("2d");
 var highlightCanvas;
@@ -15,16 +15,16 @@ var shiftX = 0,
     shiftY = 0;
 var leftUp = new Object();
 leftUp.x = 0;
-leftUp.y = 125;
+leftUp.y = 80;
 var leftDown = new Object();
 leftDown.x = 0;
-leftDown.y = 425;
+leftDown.y = 460;
 var rightUp = new Object();
-rightUp.x = 920;
-rightUp.y = 125;
+rightUp.x = 800;
+rightUp.y = 80;
 var rightDown = new Object();
-rightDown.x = 920;
-rightDown.y = 425;
+rightDown.x = 800;
+rightDown.y = 460;
 IFmotion = new Object();
 var keys = new Array();
 var currentKey = 0;
@@ -1175,34 +1175,54 @@ function syncRefPoints(ratioOrMoveFirst) {
 
 function generateQWERTYlayout() {
     var count = 0;
+    var QWERTYwidth = rightUp.x - leftUp.x;
+    var QWERTYheight = leftDown.y - leftUp.y;
+    var gapWidth = QWERTYwidth * 0.01;
+    var gapHeight = QWERTYheight * 0.02;
+    
     for (var key in QWERTYlayout) {
         if (count < 10) {
-            QWERTYlayout[key].leftUp.x = leftUp.x + (rightUp.x - leftUp.x) / 10 * count;
-            QWERTYlayout[key].leftUp.y = leftUp.y;
-            QWERTYlayout[key].rightUp.x = leftUp.x + (rightUp.x - leftUp.x) / 10 * (count + 1);
-            QWERTYlayout[key].rightUp.y = rightUp.y;
+            QWERTYlayout[key].leftUp.x = leftUp.x + gapWidth * (count + 1) + (QWERTYwidth - gapWidth * 11) / 10 * count;
+            QWERTYlayout[key].leftUp.y = leftUp.y + gapHeight;
+            QWERTYlayout[key].rightUp.x = QWERTYlayout[key].leftUp.x + (QWERTYwidth - gapWidth * 11) / 10;
+            QWERTYlayout[key].rightUp.y = QWERTYlayout[key].leftUp.y;
             QWERTYlayout[key].leftDown.x = QWERTYlayout[key].leftUp.x;
-            QWERTYlayout[key].leftDown.y = leftUp.y + (leftDown.y - leftUp.y) / 3;
+            QWERTYlayout[key].leftDown.y = QWERTYlayout[key].leftUp.y + (QWERTYheight - gapHeight * 5) / 4;
             QWERTYlayout[key].rightDown.x = QWERTYlayout[key].rightUp.x;
-            QWERTYlayout[key].rightDown.y = leftUp.y + (leftDown.y - leftUp.y) / 3;
+            QWERTYlayout[key].rightDown.y = QWERTYlayout[key].leftDown.y;
         } else if (count >= 10 && count < 19) {
-            QWERTYlayout[key].leftUp.x = leftUp.x + (rightUp.x - leftUp.x) / 9 * (count - 10);
-            QWERTYlayout[key].leftUp.y = leftUp.y + (leftDown.y - leftUp.y) / 3;
-            QWERTYlayout[key].rightUp.x = leftUp.x + (rightUp.x - leftUp.x) / 9 * (count - 10 + 1);
-            QWERTYlayout[key].rightUp.y = leftUp.y + (leftDown.y - leftUp.y) / 3;
+            QWERTYlayout[key].leftUp.x = leftUp.x + gapWidth * (count - 10 + 4) + (QWERTYwidth - gapWidth * 16) / 9 * (count - 10);
+            QWERTYlayout[key].leftUp.y = leftUp.y + gapHeight * 2 + (QWERTYheight - gapHeight * 5) / 4;
+            QWERTYlayout[key].rightUp.x = QWERTYlayout[key].leftUp.x + (QWERTYwidth - gapWidth * 16) / 9;
+            QWERTYlayout[key].rightUp.y = QWERTYlayout[key].leftUp.y;
             QWERTYlayout[key].leftDown.x = QWERTYlayout[key].leftUp.x;
-            QWERTYlayout[key].leftDown.y = leftUp.y + (leftDown.y - leftUp.y) * 2 / 3;
+            QWERTYlayout[key].leftDown.y = QWERTYlayout[key].leftUp.y + (QWERTYheight - gapHeight * 5) / 4;
             QWERTYlayout[key].rightDown.x = QWERTYlayout[key].rightUp.x;
-            QWERTYlayout[key].rightDown.y = leftUp.y + (leftDown.y - leftUp.y) * 2 / 3;
+            QWERTYlayout[key].rightDown.y = QWERTYlayout[key].leftDown.y;
+        } else if(count == 26){                 //space
+            QWERTYlayout[key].leftUp.x = leftUp.x + gapWidth * ( 6) + (QWERTYwidth - gapWidth * 16) / 9 * ( 2);
+            QWERTYlayout[key].leftUp.y = leftUp.y + gapHeight * 4 + (QWERTYheight - gapHeight * 5) / 4 * 3;
+            QWERTYlayout[key].rightUp.x = leftUp.x + gapWidth * ( 10) + (QWERTYwidth - gapWidth * 16) / 9 * ( 7);
+            QWERTYlayout[key].rightUp.y = QWERTYlayout[key].leftUp.y;
+            QWERTYlayout[key].leftDown.x = QWERTYlayout[key].leftUp.x;
+            QWERTYlayout[key].leftDown.y = QWERTYlayout[key].leftUp.y + (QWERTYheight - gapHeight * 5) / 4;
+            QWERTYlayout[key].rightDown.x = QWERTYlayout[key].rightUp.x;
+            QWERTYlayout[key].rightDown.y = QWERTYlayout[key].leftDown.y;
         } else {
-            QWERTYlayout[key].leftUp.x = leftUp.x + (rightUp.x - leftUp.x) / 9 * (count - 19);
-            QWERTYlayout[key].leftUp.y = leftUp.y + (leftDown.y - leftUp.y) * 2 / 3;
-            QWERTYlayout[key].rightUp.x = leftUp.x + (rightUp.x - leftUp.x) / 9 * (count - 19 + 1);
-            QWERTYlayout[key].rightUp.y = leftUp.y + (leftDown.y - leftUp.y) * 2 / 3;
+            QWERTYlayout[key].leftUp.x = leftUp.x + gapWidth * (count - 19 + 5) + (QWERTYwidth - gapWidth * 16) / 9 * (count - 19 + 1);
+            QWERTYlayout[key].leftUp.y = leftUp.y + gapHeight * 3 + (QWERTYheight - gapHeight * 5) / 4 * 2;
+            QWERTYlayout[key].rightUp.x = QWERTYlayout[key].leftUp.x + (QWERTYwidth - gapWidth * 16) / 9;
+            QWERTYlayout[key].rightUp.y = QWERTYlayout[key].leftUp.y;
             QWERTYlayout[key].leftDown.x = QWERTYlayout[key].leftUp.x;
-            QWERTYlayout[key].leftDown.y = leftDown.y;
+            QWERTYlayout[key].leftDown.y = QWERTYlayout[key].leftUp.y + (QWERTYheight - gapHeight * 5) / 4;
             QWERTYlayout[key].rightDown.x = QWERTYlayout[key].rightUp.x;
-            QWERTYlayout[key].rightDown.y = leftDown.y;
+            QWERTYlayout[key].rightDown.y = QWERTYlayout[key].leftDown.y;
+            if(count == 27){                    //delete      
+                QWERTYlayout[key].leftUp.x = QWERTYlayout[key].leftUp.x - (QWERTYwidth - gapWidth * 16) / 9;
+                QWERTYlayout[key].leftDown.x = QWERTYlayout[key].leftUp.x;
+                QWERTYlayout[key].rightUp.x = rightUp.x - gapWidth;
+                QWERTYlayout[key].rightDown.x = QWERTYlayout[key].rightUp.x;    
+            }
         }
         var center = new Object();
         center.x = (QWERTYlayout[key].leftUp.x + QWERTYlayout[key].rightUp.x) / 2;
