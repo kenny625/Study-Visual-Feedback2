@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Study Visual Feedback</title>
+    <link rel="stylesheet" href="keyboard.css">
+</head>
+
+<body>
+    <div id="textOutputLower">sentence</div>
+    <div id="textOutputUpper"></div>
+    <canvas id="myCanvas" width="980" height="551">
+        Sorry, your browser is not supported.
+    </canvas>
+    <img src="img/DSC_0446_clipped_rev_1.png" alt="">
+    <div id="control">
+        <button id="loadDefault">default layout</button>
+        <input type="text" id="userName">
+        <button id="setName">set name</button>
+        <input type="text" id="keyName">
+        <button id="setKey">set key</button>
+        <select id="modeSelect">
+            <option value="rearrange">rearrange</option>
+            <option value="add">add</option>
+            <option value="test">test</option>
+        </select>
+        <button id="setMode">set mode</button>
+        <button id="save">save layout</button>
+        <button id="load">load layout</button>
+        <button id="startBtn">start</button>
+        <input type="text" id="sentence">
+        <button id="setSentence">set sentence</button>
+        <button id="QWERTY">load QWERTY</button>
+        <button id="dumpVertices">dump site vertices</button>
+        <button id="dumpQWERTY">dump QWERTY</button>
+    </div>
+    <div id="cursor"></div>
+
+
+
+    <script type="text/javascript" src="rhill-voronoi-core.min.js"></script>
+<!--    <script src="socketioJS/socket.io.min.js"></script>-->
+    <script src="html2canvas.js"></script>
+    <script src="test.js"></script>
+    
+    
+</body>
+
+</html>

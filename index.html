@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Study Visual Feedback</title>
+    <link rel="stylesheet" href="keyboard.css">
+</head>
+
+<body>
+    <div id="textOutputLower">sentence</div>
+    <div id="textOutputUpper"></div>
+    <canvas id="myCanvas" width="980" height="551">
+        Sorry, your browser is not supported.
+    </canvas>
+    <img src="img/user1022.png" alt="">
+    <div id="control">
+        <button id="loadDefault">default layout</button>
+        <input type="text" id="userName">
+        <button id="setName">set name</button>
+        <input type="text" id="keyName">
+        <button id="setKey">set key</button>
+        <select id="modeSelect">
+            <option value="rearrange">rearrange</option>
+            <option value="add">add</option>
+            <option value="test">test</option>
+        </select>
+        <button id="setMode">set mode</button>
+        <button id="save">save layout</button>
+        <button id="load">load layout</button>
+        <button id="setHand">set hand</button>
+        <button id="startBtn">start</button>
+        <input type="text" id="sentence">
+        <button id="setSentence">set sentence</button>
+        <button id="QWERTY">load QWERTY</button>
+        <button id="dumpVertices">dump site vertices</button>
+        <button id="dumpQWERTY">dump QWERTY</button>
+        <select id="layoutSelect">
+            <option value="Voronoi">Voronoi</option>
+            <option value="QWERTY">QWERTY</option>
+            <option value="Trackpad">Trackpad</option>
+            <option value="Test">Test</option>
+        </select>
+        <button id="broadcastLayout">Broadcast layout</button>
+        <input type="range" id="scaleSlider" min="0.5" max="2" step="0.05"/>
+        <input type="text" id="scaleRatio" class="numberDisplay" value="1">
+        <button id="setScale">Set Scale</button>
+        <span id="ref1">ref1</span>
+        <span id="ref2">ref2</span>
+        <input type="range" id="xSlider" min="-100" max="100" step="5"/>
+        <input type="text" id="shiftX" class="numberDisplay" value="0">
+        <button id="setX">Set x</button>
+        <span id="xOutput">0</span>
+        <input type="range" id="ySlider" min="-200" max="200" step="5"/>
+        <input type="text" id="shiftY" class="numberDisplay" value="0">
+        <button id="setY">Set y</button>
+        <span id="yOutput">0</span>
+    </div>
+    <div id="cursor"></div>
+
+
+
+    <script type="text/javascript" src="rhill-voronoi-core.min.js"></script>
+<!--    <script src="socketioJS/socket.io.min.js"></script>-->
+    <script src="keyboard.js"></script>
+</body>
+
+</html>
