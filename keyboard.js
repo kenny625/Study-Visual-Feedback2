@@ -15,16 +15,16 @@ var shiftX = 0,
     shiftY = 0;
 var leftUp = new Object();
 leftUp.x = 0;
-leftUp.y = 80;
+leftUp.y = 100;
 var leftDown = new Object();
 leftDown.x = 0;
-leftDown.y = 460;
+leftDown.y = 510;
 var rightUp = new Object();
-rightUp.x = 800;
-rightUp.y = 80;
+rightUp.x = 890;
+rightUp.y = 100;
 var rightDown = new Object();
-rightDown.x = 800;
-rightDown.y = 460;
+rightDown.x = 890;
+rightDown.y = 510;
 IFmotion = new Object();
 var keys = new Array();
 var currentKey = 0;
@@ -47,147 +47,7 @@ var start = false;
 var keyIndex = new Array();
 var inQWERTY = false;
 var defaultLayoutObj = {
-    "layout": [{
-        "x": 65,
-        "y": 184,
-        "voronoiId": 9,
-        "key": "Q"
-    }, {
-        "x": 153,
-        "y": 117,
-        "voronoiId": 0,
-        "key": "W"
-    }, {
-        "x": 242,
-        "y": 169,
-        "voronoiId": 7,
-        "key": "E"
-    }, {
-        "x": 345,
-        "y": 177,
-        "voronoiId": 8,
-        "key": "R"
-    }, {
-        "x": 456,
-        "y": 149,
-        "voronoiId": 6,
-        "key": "T"
-    }, {
-        "x": 545,
-        "y": 138,
-        "voronoiId": 5,
-        "key": "Y"
-    }, {
-        "x": 616,
-        "y": 129,
-        "voronoiId": 3,
-        "key": "U"
-    }, {
-        "x": 678,
-        "y": 132,
-        "voronoiId": 4,
-        "key": "I"
-    }, {
-        "x": 730,
-        "y": 125,
-        "voronoiId": 1,
-        "key": "O"
-    }, {
-        "x": 801,
-        "y": 126,
-        "voronoiId": 2,
-        "key": "P"
-    }, {
-        "x": 106,
-        "y": 326,
-        "voronoiId": 19,
-        "key": "A"
-    }, {
-        "x": 240,
-        "y": 317,
-        "voronoiId": 17,
-        "key": "S"
-    }, {
-        "x": 345,
-        "y": 310,
-        "voronoiId": 16,
-        "key": "D"
-    }, {
-        "x": 473,
-        "y": 257,
-        "voronoiId": 15,
-        "key": "F"
-    }, {
-        "x": 592,
-        "y": 241,
-        "voronoiId": 14,
-        "key": "G"
-    }, {
-        "x": 678,
-        "y": 229,
-        "voronoiId": 13,
-        "key": "H"
-    }, {
-        "x": 746,
-        "y": 226,
-        "voronoiId": 12,
-        "key": "J"
-    }, {
-        "x": 806,
-        "y": 218,
-        "voronoiId": 11,
-        "key": "K"
-    }, {
-        "x": 885,
-        "y": 216,
-        "voronoiId": 10,
-        "key": "L"
-    }, {
-        "x": 104,
-        "y": 468,
-        "voronoiId": 27,
-        "key": "Z"
-    }, {
-        "x": 474,
-        "y": 353,
-        "voronoiId": 23,
-        "key": "X"
-    }, {
-        "x": 576,
-        "y": 356,
-        "voronoiId": 24,
-        "key": "C"
-    }, {
-        "x": 645,
-        "y": 348,
-        "voronoiId": 22,
-        "key": "V"
-    }, {
-        "x": 704,
-        "y": 338,
-        "voronoiId": 21,
-        "key": "B"
-    }, {
-        "x": 761,
-        "y": 333,
-        "voronoiId": 20,
-        "key": "N"
-    }, {
-        "x": 846,
-        "y": 317,
-        "voronoiId": 18,
-        "key": "M"
-    }, {
-        "x": 240,
-        "y": 464,
-        "voronoiId": 26,
-        "key": "space"
-    }, {
-        "x": 402,
-        "y": 458,
-        "voronoiId": 25,
-        "key": "delete"
-    }]
+    "layout": [{"x":65,"y":184,"voronoiId":9,"key":"Q"},{"x":153,"y":117,"voronoiId":0,"key":"W"},{"x":242,"y":169,"voronoiId":7,"key":"E"},{"x":345,"y":177,"voronoiId":8,"key":"R"},{"x":464,"y":131,"voronoiId":1,"key":"T"},{"x":554,"y":143,"voronoiId":2,"key":"Y"},{"x":630,"y":144,"voronoiId":3,"key":"U"},{"x":682,"y":154,"voronoiId":4,"key":"I"},{"x":735,"y":157,"voronoiId":5,"key":"O"},{"x":823,"y":166,"voronoiId":6,"key":"P"},{"x":96,"y":305,"voronoiId":18,"key":"A"},{"x":227,"y":287,"voronoiId":17,"key":"S"},{"x":340,"y":284,"voronoiId":16,"key":"D"},{"x":484,"y":253,"voronoiId":15,"key":"F"},{"x":587,"y":251,"voronoiId":13,"key":"G"},{"x":677,"y":251,"voronoiId":14,"key":"H"},{"x":750,"y":246,"voronoiId":10,"key":"J"},{"x":806,"y":249,"voronoiId":12,"key":"K"},{"x":888,"y":247,"voronoiId":11,"key":"L"},{"x":91,"y":382,"voronoiId":26,"key":"Z"},{"x":383,"y":361,"voronoiId":24,"key":"X"},{"x":477,"y":357,"voronoiId":20,"key":"C"},{"x":572,"y":358,"voronoiId":21,"key":"V"},{"x":625,"y":365,"voronoiId":25,"key":"B"},{"x":682,"y":359,"voronoiId":22,"key":"N"},{"x":745,"y":359,"voronoiId":23,"key":"M"},{"x":240,"y":464,"voronoiId":27,"key":"space"},{"x":795,"y":350,"voronoiId":19,"key":"del"}]
 };
 
 var QWERTYlayout = {
@@ -677,7 +537,7 @@ var QWERTYlayout = {
             "y": null
         }
     },
-    delete: {
+    del: {
         "leftUp": {
             "x": null,
             "y": null
@@ -788,7 +648,7 @@ if ("WebSocket" in window) {
                     textOutput = textOutput.replace("|", '');
                     if (received_msg_obj.key == "space") {
                         textOutput += " ";
-                    } else if (received_msg_obj.key == "delete") {
+                    } else if (received_msg_obj.key == "del") {
                         textOutput = textOutput.substring(0, textOutput.length - 1);
                     } else {
                         textOutput += received_msg_obj.key;
@@ -1020,7 +880,7 @@ function drawQWERTY() {
         QWERTYctx.globalAlpha = 1;
         QWERTYctx.clearRect(QWERTYlayout[key].center.x - 5, QWERTYlayout[key].center.y - 5, 10, 10);
         QWERTYctx.font = '30pt Calibri';
-        if (key == "space" || key == "delete") {
+        if (key == "space" || key == "del") {
             QWERTYctx.font = '15pt Calibri';
         }
         QWERTYctx.fillStyle = '#00FF00';
